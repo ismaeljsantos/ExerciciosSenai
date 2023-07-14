@@ -6,7 +6,7 @@
 // - Senão, Imprimir: "Sua idade é X anos, acesso negado"
 
 var anoEvento = new Date().getFullYear();
-var anoNascimento = 2008;
+var anoNascimento = 2005;
 const idade = anoEvento - anoNascimento;
 
 
@@ -17,3 +17,7 @@ if(idade >= 18){
 }else if(idade < 15) {
     console.log(`Sua idade é ${ idade} anos, acesso negado`);
 }
+
+// validação por ternário
+var resposta = (idade >= 18) ? "pode entar":"Entrada não permitida";
+console.log(`Sua idade é ${idade } anos, ${resposta}`);
