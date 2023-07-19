@@ -11,13 +11,14 @@ class Carro {
         this.quantidadePortas = quantidadePortas;
         this.acentos = acentos;
     }
-
     set _modelo(modelo){
         this.modelo = modelo;
     }
     get _modelo(){
         return this.modelo;
     }
+    // atividade aula 5 
+    // adicionar get e set para todos os atributos
     set _ano(ano){
         this.ano = ano;
     }
