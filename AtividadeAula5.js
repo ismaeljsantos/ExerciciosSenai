@@ -11,15 +11,16 @@
 // Executar todas as funções.
 
 class Pessoa {
-    constructor(nome, anoNascimento, nacionalidade, endedeco, salario){
+    constructor(nome, anoNascimento, nacionalidade, endedeco, salario, aumento, desconto){
         this.nome = nome;
         this.anoNascimento = anoNascimento;
         this.nacionalidade = nacionalidade;
         this.endedeco = endedeco;
         this.salario = salario;
         //const anoAtual = new Date().getFullYear();
-        var idade =  new Date().getFullYear() - anoNascimento;
-        this.idade = idade;
+        this.idade = this.CalcularIdade(this.anoNascimento);
+        this.aumento = aumento;
+        this.desconto = desconto;
     }
     set _nome(nome){ this.nome = nome; }
     get _nome(){  return this.nome; }
@@ -36,6 +37,20 @@ class Pessoa {
     set _salario(salario){ this.salario = salario; }
     get _salario(){  return this.salario; }
 
+    set _idade(idade){ 
+  
+        if(idade != idadeCal){
+
+        }  }
+    get _idade(){  return this.salario; }
+    
+    CalcularIdade(anoNascimento){
+        const idade =  new Date().getFullYear() - anoNascimento;
+        return idade;
+    }
+    CalcularPorcentagem(porcentagem){
+        return this.salario * (porcentagem /100);
+    }
 
     ImprimirDadosPessoal(){
         console.log(`Nome: ${this.nome}
@@ -46,26 +61,24 @@ Salario: ${this.salario.toLocaleString('pt-br',{style: 'currency', currency: 'BR
 Idade: ${this.idade}`);
 
     }
+
     ImprimirAumento(){
-        let aumentoSalario = this.salario * (7.5 / 100);
-        console.log(`Aumento de 7,5%:  ${aumentoSalario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`);
+        console.log(`Aumento de ${this.aumento}%:  ${this.CalcularPorcentagem(this.aumento).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`);
     }
     ImprimirSalarioComAumento(){
-        let aumentoSalario = this.salario + (this.salario * (7.5 / 100))
-        console.log(`Salario atualizado com aumento: ${aumentoSalario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`);
+        
+        console.log(`Salario atualizado com aumento: ${(this.salario + this.CalcularPorcentagem(this.aumento)).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`);
     }
     ImprimirDescontos(){
-        let descontoSalario = this.salario * (27.3 / 100);
-        console.log("Desconto de 27,3%: " + descontoSalario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+        console.log(`Desconto de ${this.desconto}%: ${ this.CalcularPorcentagem(this.desconto).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`);
     }
     ImprimirSalacioComDescontos(){
-        let descontoSalario = (this.salario * (27.3 / 100));
-        console.log("Salario atualizado com desconto: " + descontoSalario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+        console.log(`Salario atualizado com desconto: ${(this.salario + this.CalcularPorcentagem(this.desconto)).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`);
     }
     
 }
 
-var primeiraPessoa = new Pessoa("Ismael", 1996, "Brasileiro", "rua da mota, sn, terra santa", 2000.00);
+var primeiraPessoa = new Pessoa("Ismael", 1996, "Brasileiro", "rua da mota, sn, terra santa", 2500.00, 7.5, 27.3);
 primeiraPessoa.ImprimirDadosPessoal();
 primeiraPessoa.ImprimirAumento();
 primeiraPessoa.ImprimirSalarioComAumento();
@@ -73,17 +86,17 @@ primeiraPessoa.ImprimirDescontos();
 primeiraPessoa.ImprimirSalacioComDescontos();
 console.log("------------------------------------------------");
 
-var primeiraPessoa = new Pessoa("Ellen", 1992, "Brasileira", "rua k, 123, abobora", 3500.00);
-primeiraPessoa.ImprimirDadosPessoal();
-primeiraPessoa.ImprimirAumento();
-primeiraPessoa.ImprimirSalarioComAumento();
-primeiraPessoa.ImprimirDescontos();
-primeiraPessoa.ImprimirSalacioComDescontos();
-console.log("------------------------------------------------");
+// var primeiraPessoa = new Pessoa("Ellen", 1992, "Brasileira", "rua k, 123, abobora", 3500.00);
+// primeiraPessoa.ImprimirDadosPessoal();
+// primeiraPessoa.ImprimirAumento(7.5);
+// primeiraPessoa.ImprimirSalarioComAumento(7.5);
+// primeiraPessoa.ImprimirDescontos(27.3);
+// primeiraPessoa.ImprimirSalacioComDescontos(27.3);
+// console.log("------------------------------------------------");
 
-var primeiraPessoa = new Pessoa("Orion", 1992, "Brasileiro", "rua A, 321, abobora", 3000.00);
-primeiraPessoa.ImprimirDadosPessoal();
-primeiraPessoa.ImprimirAumento();
-primeiraPessoa.ImprimirSalarioComAumento();
-primeiraPessoa.ImprimirDescontos();
-primeiraPessoa.ImprimirSalacioComDescontos();
+// var primeiraPessoa = new Pessoa("Orion", 1992, "Brasileiro", "rua A, 321, abobora", 3000.00);
+// primeiraPessoa.ImprimirDadosPessoal();
+// primeiraPessoa.ImprimirAumento(7.5);
+// primeiraPessoa.ImprimirSalarioComAumento(7.5);
+// primeiraPessoa.ImprimirDescontos(27.3);
+// primeiraPessoa.ImprimirSalacioComDescontos(27.3);
